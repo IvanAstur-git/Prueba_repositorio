@@ -41,6 +41,141 @@ INSERT INTO empleado VALUES(12, '41234836R', 'Irene','Salas', 'Flores', NULL);
 INSERT INTO empleado VALUES(13, '82635162B', 'Juan Antonio','Sáez', 'Guerrero', NULL);
 
 -- Tarea 1
-
 Select nombre, apellido1, apellido2
-from empleados;
+from empleado;
+
+-- Tarea 2
+Select apellido1 
+from empleado;
+
+-- Tarea 3
+Select *
+from empleado;
+
+-- Tarea 4
+Select id_departamento, nombre
+from empleado;
+
+-- Tarea 5
+Select id_departamento
+from empleado;
+-- Tarea 6
+select concat_ws("_", nombre, apellido1) as "Nombre de empleado"
+from empleado;
+
+-- Tarea 7
+select concat (lower (nombre),"__",  lower(apellido1), "__", lower(apellido2)) as "Nombre de empleado" 
+from empleado;
+
+-- Tarea 8 (no compleatada)
+select id, substr(nif, 1, 8) as "número_nif", substr(nif, 9, 1) as "letra_nif"
+from empleado;
+
+-- Tarea 9
+select nombre, presupuesto, gastos, presupuesto - gastos as "Presupuesto actual"
+from empleado;
+
+-- Tarea 10 
+select nombre, presupuesto
+from departamento
+order by nombre, presupuesto asc;
+
+-- Tarea 11
+select nombre
+from departamento
+order by nombre desc;
+
+-- Tarea 12
+select nombre, apellido1, apellido2
+FROM empleado
+order by 2,3,1;
+
+-- Tarea 13
+select nombre, presupuesto
+from departamento
+order by 2 desc
+limit 3;
+
+-- Tarea 14
+select nombre, gastos
+from departamento
+order by 2 desc
+limit 2;
+
+-- Tarea 16
+select nombre, gastos
+from departamento
+order by 2 asc
+limit 2;
+
+-- Tarea 17
+select *
+from empleado
+limit 5 offset 2;
+
+-- Tarea 18
+select nombre, presupuesto
+from departamento
+where presupuesto >= 15000;
+
+-- Tarea 19
+select nombre, presupuesto
+from departamento
+where presupuesto >= 150000 and presupuesto <= 200000;
+
+-- Tarea 20 
+select nombre, presupuesto
+from departamento
+where presupuesto between 150000 and 200000 ;
+
+-- Tarea 21
+select gastos, presupuesto
+from departamento
+where gastos < presupuesto;
+
+-- Tarea 26
+select *
+from empleado
+where apellido2= "Lopéz"; 
+
+-- Tarea 27
+select *
+from empleado
+WHERE apellido2 like "Diaz" or apellido2 LIKE "Moreno";
+
+-- Tarea 28
+select *
+from empleado
+WHERE apellido2 in ("Diaz", "Moreno");
+
+-- Tarea 29
+select nombre, apellido1, apellido2, nif
+from empleado
+where id_departamento=3;
+
+-- Tarea 30
+select sum(presupuesto)
+from empleado;
+
+-- Tarea 31
+select round(avg(presupuesto),2) as "Medía del presupuesto", "€" as "Moneda"
+from departamento;
+
+-- Tarea 34
+select nombre, presupuesto
+from departamento
+where presupuesto = (select min(presupuesto) from departamento);
+
+-- Tarea 35
+select nombre, presupuesto
+from departamento
+where presupuesto = (select max(presupuesto) from departamento);
+
+-- Tarea 36
+select nombre, presupuesto
+from departamento
+where presupuesto = (select max(presupuesto) from departamento);
+
+-- tarea 37
+select count(*)
+from empleado;
